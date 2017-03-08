@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ItemsTree } from '../components';
 import * as actions from '../actions/actions';
+import { Link } from 'react-router';
 
 
 function toTree(nodes){
@@ -23,9 +24,6 @@ function toTree(nodes){
 
 
 class ItemsList extends Component {
-    constructor(props, context) {
-        super(props, context);
-    }
 
     componentWillMount() {
         const {actions} = this.props;
@@ -33,10 +31,12 @@ class ItemsList extends Component {
     }
     render() {
         const {itemsList} = this.props;
-        console.log(itemsList);
         const nodes = toTree(itemsList);
         return (
-            <ItemsTree nodes={nodes}/>
+            <div>
+                <Link to="/new">Добавить классификатор</Link>
+                <ItemsTree nodes={nodes}/>
+            </div>
         );
     }
 }
@@ -49,7 +49,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+      actions: bindActionCreators(actions, dispatch)
   };
 }
 

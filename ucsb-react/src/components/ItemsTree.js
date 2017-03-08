@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TreeView from 'react-treeview';
+import { Link } from 'react-router';
 
 
 class ItemsTree extends Component {
@@ -9,10 +10,10 @@ class ItemsTree extends Component {
             <div>
                 {nodes.map((node, i) => {
                     const name = node.name;
-                    const label = <span className="node">{name}</span>;
+                    const label = <Link to={node.id +"/edit"}><span className="node">{name}</span></Link>;
                     let nodeView;
                     if (node.children.length === 0){
-                        nodeView = <div className="info">{name}</div>;
+                        nodeView =  <Link key={node.id} to={node.id +"/edit"}><div className="info">{name}</div></Link>;
                     }
                     else{
                         nodeView = (
@@ -27,5 +28,4 @@ class ItemsTree extends Component {
         );
     }
 }
-
 export default ItemsTree;

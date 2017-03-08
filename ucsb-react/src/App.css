@@ -32,10 +32,10 @@
   border-radius: 3px;
 }
 
-.info:hover, .node:hover {
-  background-color: rgb(220, 245, 243);
-  cursor: pointer;
-}
+/*.info:hover, .node:hover {*/
+  /*background-color: rgb(220, 245, 243);*/
+  /*cursor: pointer;*/
+/*}*/
 
 .info, .node {
   padding: 2px 10px 2px 5px;
