@@ -3,6 +3,9 @@ from api.models import Item
 
 
 class ItemSerializer(serializers.ModelSerializer):
+
+    name = serializers.RegexField('^(\w+\s)*\w+$')
+
     class Meta:
         model = Item
         fields = ('id', 'name', 'parent')
@@ -16,3 +19,13 @@ class ItemSerializer(serializers.ModelSerializer):
                     {'parent': 'A node may not be made a child of any of its descendants.'}
                 )
         return value
+
+    def validate(self, attrs):
+        name = attrs['name']
+        parent = attrs['parent']
+        if parent and parent.get_family().filter(name=name).exists():
+            raise serializers.ValidationError(
+                {
+                    'parent': 'Name should be unique in family tree'}
+            )
+        return attrs

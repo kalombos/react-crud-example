@@ -34,7 +34,7 @@ class ItemsList extends Component {
         const nodes = toTree(itemsList);
         return (
             <div>
-                <Link to="/new">Добавить классификатор</Link>
+                <Link className="btn btn-info btn-mini" to="/new">Добавить классификатор</Link>
                 <ItemsTree nodes={nodes}/>
             </div>
         );

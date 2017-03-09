@@ -24,3 +24,19 @@ export function itemsListAsync() {
             })
     };
 }
+
+export function createItemAsync(data) {
+    let options = {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify( data )
+    };
+    return (dispatch) => {
+        return fetchWrapper('http://localhost:8000/api/items/', options)
+            .then(success => {
+                return success;
+            })
+    };
+}

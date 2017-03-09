@@ -8,8 +8,8 @@ import {routerReducer} from 'react-router-redux'
 const rootReducer = combineReducers({
     routing: routerReducer,
     items: itemsReducer,
-    itemModel: modelReducer('itemModel', {name: '', parent: null}),
-    itemForm: formReducer('itemModel', {name: '', parent: null})
+    itemModel: modelReducer('itemModel', {name: '', parent: ''}),
+    itemForm: formReducer('itemModel', {name: '', parent: ''})
 });
 
 export default rootReducer;
