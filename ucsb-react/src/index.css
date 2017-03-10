@@ -54,3 +54,10 @@ body {
 .tree-view_arrow-empty {
   color: yellow;
 }
+.required-asterisk:before {
+  content: '*';
+  color: #d9534f;
+}
+.error-helper {
+  color: #a94442;
+}

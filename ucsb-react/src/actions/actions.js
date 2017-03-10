@@ -40,3 +40,49 @@ export function createItemAsync(data) {
             })
     };
 }
+
+export function getItemAsync(id) {
+    let options = {
+        method: 'get',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+    return (dispatch) => {
+        return fetchWrapper('http://localhost:8000/api/items/' + id + '/', options)
+            .then(success => {
+                return success;
+            })
+    };
+}
+
+export function updateItemAsync(data) {
+    let options = {
+        method: 'put',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify( data )
+    };
+    return (dispatch) => {
+        return fetchWrapper('http://localhost:8000/api/items/' + data.id + '/', options)
+            .then(success => {
+                return success;
+            })
+    };
+}
+
+export function deleteItemAsync(id) {
+    let options = {
+        method: 'delete',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    };
+    return (dispatch) => {
+        return fetchWrapper('http://localhost:8000/api/items/' + id + '/', options)
+            .then(success => {
+                return success;
+            })
+    };
+}

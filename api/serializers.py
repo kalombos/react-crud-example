@@ -23,9 +23,14 @@ class ItemSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         name = attrs['name']
         parent = attrs['parent']
-        if parent and parent.get_family().filter(name=name).exists():
-            raise serializers.ValidationError(
-                {
-                    'parent': 'Name should be unique in family tree'}
-            )
+        instance = self.instance
+        if parent:
+            queryset = parent.get_family().filter(name=name)
+            if instance:
+                queryset = queryset.exclude(id=instance.id)
+            if queryset.exists():
+                raise serializers.ValidationError(
+                    {
+                        'parent': 'Name should be unique in family tree'}
+                    )
         return attrs

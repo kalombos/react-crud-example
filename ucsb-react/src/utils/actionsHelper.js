@@ -17,5 +17,10 @@ function status(response) {
 }
 
 function json(response) {
-    return response.json();
+    if (response.status !== 204) {
+        return response.json();
+    }
+    else{
+        return {}
+    }
 }
