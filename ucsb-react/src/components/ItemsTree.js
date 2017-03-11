@@ -17,7 +17,7 @@ class ItemsTree extends Component {
                     }
                     else{
                         nodeView = (
-                            <TreeView key={node.id} nodeLabel={label} defaultCollapsed={true}>
+                            <TreeView key={node.id} nodeLabel={label} defaultCollapsed={false}>
                                 <ItemsTree nodes={node.children}/>
                             </TreeView>
                         )

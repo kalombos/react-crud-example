@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import { Field, Form, Errors } from 'react-redux-form';
-import { required} from '../utils/formValidator';
+import { required, isValidName} from '../utils/formValidator';
 
 class ItemsForm extends React.Component {
 
@@ -26,11 +26,15 @@ class ItemsForm extends React.Component {
         <div className="row">
           <div className="col-md-4">
             <Form model="itemModel">
-              <Field model="itemModel.name" className={"form-group "} validators={{required}}>
+              <Field model="itemModel.name" className={"form-group "} validators={{required, isValidName }}>
                   <label className="required-asterisk">Название:</label>
                   <input className="form-control" type="text" />
                   <Errors className="error-helper" model="itemModel.name" show={{touched: true, focus: false}}
-                          messages={{required: 'Название не может быть пустым'}}/>
+                          messages={
+                              {
+                                  required: 'Название не может быть пустым',
+                                  isValidName: 'Имя может состоять только из букв и цифр. Слова должны разделяться одиночными пробелами'
+                              }}/>
               </Field>
 
               <label>Родитель:</label>
