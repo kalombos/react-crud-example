@@ -48,6 +48,7 @@ class ItemsForm extends React.Component {
 
                 <Field model="itemModel.parent" className={"form-group "} >
                   <select className="hidden" />
+                    <Errors className="error-helper" model="itemModel.parent" show={{focus: false}}/>
                 </Field>
             </Form>
           </div>

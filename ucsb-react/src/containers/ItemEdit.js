@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import { actions } from 'react-redux-form';
 import { routerActions } from 'react-router-redux';
 import {ItemForm} from '../components'
+import { setServerErrors } from '../utils/formValidator';
 import * as itemActions from '../actions/actions';
 
 
@@ -33,12 +34,14 @@ class ItemEdit extends React.Component {
   }
 
   onUpdate(){
-      const { replace, itemModel, actions } = this.props;
+      const { replace, itemModel, actions, formActions } = this.props;
 
       actions.updateItemAsync(itemModel).then(data => {
           if(data) {
               replace('/');
           }
+      }).catch(e => {
+          setServerErrors(e, 'itemModel', formActions);
       });
   }
   onDelete(){

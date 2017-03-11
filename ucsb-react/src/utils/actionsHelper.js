@@ -4,7 +4,7 @@ export default function fetchWrapper(url = '', options = {}) {
     .then(json)
     .then(success => {
       return success;
-    })
+    }).catch(errorHandler);
 }
 
 
@@ -22,5 +22,13 @@ function json(response) {
     }
     else{
         return {}
+    }
+}
+function errorHandler(error) {
+
+    if(error.status === 400) {
+        return error.json().then(e => {
+            throw {fields: e, status: error.status};
+        });
     }
 }

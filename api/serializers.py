@@ -15,9 +15,9 @@ class ItemSerializer(serializers.ModelSerializer):
         instance = self.instance
         if instance is not None and parent is not None:
             if instance.get_descendants().filter(id=parent.id).exists():
-                raise serializers.ValidationError(
-                    {'parent': 'A node may not be made a child of any of its descendants.'}
-                )
+                raise serializers.ValidationError('Нельзя привязывать узел к своим детям')
+            if parent.id == instance.id:
+                raise serializers.ValidationError('Нельзя привязывать узел к самому себе')
         return value
 
     def validate(self, attrs):
@@ -31,6 +31,7 @@ class ItemSerializer(serializers.ModelSerializer):
             if queryset.exists():
                 raise serializers.ValidationError(
                     {
-                        'parent': 'Name should be unique in family tree'}
+                        'name':
+                            'Наименование должно быть уникальным в пределах ветки своей иерархии'}
                     )
         return attrs
