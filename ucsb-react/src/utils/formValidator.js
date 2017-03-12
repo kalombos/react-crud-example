@@ -16,7 +16,6 @@ export function setServerErrors(errors, model, actions) {
         for (let errorNumber = 0; errorNumber < errors.fields[field].length; errorNumber++) {
             tempError = {...tempError, ...{['serverError_' + errorNumber]: errors.fields[field][errorNumber]}};
         }
-        console.log(model + '.' + field);
         actions.setErrors(model + '.' + field, tempError);
     }
 }

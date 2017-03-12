@@ -1,7 +1,6 @@
 import React from 'react';
-import {App} from './App'
 import { Route, IndexRoute } from 'react-router';
-import { ItemsList, ItemNew, ItemEdit } from './containers'
+import { App, ItemsList, ItemNew, ItemEdit } from './containers'
 
 
 

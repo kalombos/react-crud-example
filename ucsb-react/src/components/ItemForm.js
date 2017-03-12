@@ -8,8 +8,13 @@ class ItemsForm extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.onParentChange = this.onParentChange.bind(this);
+        this.onNameChange = this.onNameChange.bind(this);
     }
 
+    onNameChange(e){
+        const { formActions } = this.props;
+        formActions.setValidity('itemModel.name', true);
+    }
     onParentChange(val){
         const { itemModel, formActions } = this.props;
         formActions.change('itemModel', {
@@ -18,6 +23,7 @@ class ItemsForm extends React.Component {
                 parent: val ? val.id:''
             }
         });
+        formActions.setValidity('itemModel.parent', true);
     }
 
     render() {
@@ -28,7 +34,7 @@ class ItemsForm extends React.Component {
             <Form model="itemModel">
               <Field model="itemModel.name" className={"form-group "} validators={{required, isValidName }}>
                   <label className="required-asterisk">Название:</label>
-                  <input className="form-control" type="text" />
+                  <input onChange={this.onNameChange} className="form-control" type="text" />
                   <Errors className="error-helper" model="itemModel.name" show={{touched: true, focus: false}}
                           messages={
                               {

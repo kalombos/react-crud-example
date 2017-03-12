@@ -1,5 +1,6 @@
 import * as constants from '../constants/actionTypes';
-import fetchWrapper  from '../utils/actionsHelper';
+import fetchWrapper, {errorActionHandler}  from '../utils/actionsHelper';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 
 function itemsList(data) {
@@ -18,10 +19,13 @@ export function itemsListAsync() {
         }
     };
     return (dispatch) => {
+        dispatch(showLoading());
         return fetchWrapper('http://localhost:8000/api/items/', options)
             .then(success => {
                 dispatch(itemsList(success));
+                dispatch(hideLoading());
             })
+            .catch(errorActionHandler(dispatch))
     };
 }
 
@@ -34,10 +38,13 @@ export function createItemAsync(data) {
         body: JSON.stringify( data )
     };
     return (dispatch) => {
+        dispatch(showLoading());
         return fetchWrapper('http://localhost:8000/api/items/', options)
             .then(success => {
+                dispatch(hideLoading());
                 return success;
             })
+            .catch(errorActionHandler(dispatch))
     };
 }
 
@@ -49,10 +56,13 @@ export function getItemAsync(id) {
         },
     };
     return (dispatch) => {
+        dispatch(showLoading());
         return fetchWrapper('http://localhost:8000/api/items/' + id + '/', options)
             .then(success => {
+                dispatch(hideLoading());
                 return success;
             })
+            .catch(errorActionHandler(dispatch))
     };
 }
 
@@ -65,10 +75,13 @@ export function updateItemAsync(data) {
         body: JSON.stringify( data )
     };
     return (dispatch) => {
+        dispatch(showLoading());
         return fetchWrapper('http://localhost:8000/api/items/' + data.id + '/', options)
             .then(success => {
+                dispatch(hideLoading());
                 return success;
             })
+            .catch(errorActionHandler(dispatch))
     };
 }
 
@@ -80,9 +93,12 @@ export function deleteItemAsync(id) {
         },
     };
     return (dispatch) => {
+        dispatch(showLoading());
         return fetchWrapper('http://localhost:8000/api/items/' + id + '/', options)
             .then(success => {
+                dispatch(hideLoading());
                 return success;
             })
+            .catch(errorActionHandler(dispatch))
     };
 }

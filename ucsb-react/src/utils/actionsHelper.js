@@ -1,3 +1,5 @@
+import { hideLoading } from 'react-redux-loading-bar';
+
 export default function fetchWrapper(url = '', options = {}) {
   return fetch(url, options)
     .then(status)
@@ -25,10 +27,16 @@ function json(response) {
     }
 }
 function errorHandler(error) {
-
     if(error.status === 400) {
         return error.json().then(e => {
             throw {fields: e, status: error.status};
         });
     }
+}
+
+export function errorActionHandler(dispatch) {
+    return error => {
+        dispatch(hideLoading());
+        throw error;
+    };
 }
