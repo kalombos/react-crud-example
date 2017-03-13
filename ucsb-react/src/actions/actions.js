@@ -1,6 +1,7 @@
 import * as constants from '../constants/actionTypes';
 import fetchWrapper, {errorActionHandler}  from '../utils/actionsHelper';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import {API} from '../config'
 
 
 function itemsList(data) {
@@ -20,7 +21,7 @@ export function itemsListAsync() {
     };
     return (dispatch) => {
         dispatch(showLoading());
-        return fetchWrapper('http://localhost:8000/api/items/', options)
+        return fetchWrapper(API + '/items/', options)
             .then(success => {
                 dispatch(itemsList(success));
                 dispatch(hideLoading());
@@ -39,7 +40,7 @@ export function createItemAsync(data) {
     };
     return (dispatch) => {
         dispatch(showLoading());
-        return fetchWrapper('http://localhost:8000/api/items/', options)
+        return fetchWrapper(API + '/items/', options)
             .then(success => {
                 dispatch(hideLoading());
                 return success;
@@ -57,7 +58,7 @@ export function getItemAsync(id) {
     };
     return (dispatch) => {
         dispatch(showLoading());
-        return fetchWrapper('http://localhost:8000/api/items/' + id + '/', options)
+        return fetchWrapper(API + '/items/' + id + '/', options)
             .then(success => {
                 dispatch(hideLoading());
                 return success;
@@ -76,7 +77,7 @@ export function updateItemAsync(data) {
     };
     return (dispatch) => {
         dispatch(showLoading());
-        return fetchWrapper('http://localhost:8000/api/items/' + data.id + '/', options)
+        return fetchWrapper(API + '/items/' + data.id + '/', options)
             .then(success => {
                 dispatch(hideLoading());
                 return success;
@@ -94,7 +95,7 @@ export function deleteItemAsync(id) {
     };
     return (dispatch) => {
         dispatch(showLoading());
-        return fetchWrapper('http://localhost:8000/api/items/' + id + '/', options)
+        return fetchWrapper(API + '/items/' + id + '/', options)
             .then(success => {
                 dispatch(hideLoading());
                 return success;
