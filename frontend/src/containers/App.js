@@ -9,7 +9,7 @@ class App extends Component {
     return (
         <div>
             <div className="page-header">
-                <h1>Управление иерархическим списком</h1>
+                <h1>React CRUD for tree structure</h1>
             </div>
             <LoadingBar />
             <div className="container">

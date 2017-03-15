@@ -58,11 +58,11 @@ class ItemEdit extends React.Component {
         <div>
 
           <button type="button" disabled={!itemForm.$form.valid} onClick={this.onUpdate} className="btn btn-primary btn-success">
-            Сохранить
+            Save
           </button>
-          <Link className="btn btn-info btn-mini" to="/">Отмена</Link>
+          <Link className="btn btn-info btn-mini" to="/">Cancel</Link>
           <button type="button" onClick={this.onDelete} className="btn btn-primary btn-danger">
-              Удалить
+              Remove
           </button>
           <ItemForm
               itemModel={itemModel}

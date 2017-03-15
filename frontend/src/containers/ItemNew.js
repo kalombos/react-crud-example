@@ -44,9 +44,9 @@ class ItemNew extends React.Component {
         <div>
 
           <button type="button" disabled={!itemForm.$form.valid} onClick={this.onCreate} className="btn btn-primary btn-success">
-            Создать
+            Create
           </button>
-          <Link className="btn btn-info btn-mini" to="/">Отмена</Link>
+          <Link className="btn btn-info btn-mini" to="/">Cancel</Link>
           <ItemForm
               itemModel={itemModel}
               itemForm={itemForm}

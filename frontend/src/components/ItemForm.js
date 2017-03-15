@@ -33,7 +33,7 @@ class ItemsForm extends React.Component {
           <div className="col-md-4">
             <Form model="itemModel">
               <Field model="itemModel.name" className={"form-group "} validators={{required, isValidName }}>
-                  <label className="required-asterisk">Название:</label>
+                  <label className="required-asterisk">Name:</label>
                   <input onChange={this.onNameChange} className="form-control" type="text" />
                   <Errors className="error-helper" model="itemModel.name" show={{touched: true, focus: false}}
                           messages={
@@ -43,7 +43,7 @@ class ItemsForm extends React.Component {
                               }}/>
               </Field>
 
-              <label>Родитель:</label>
+              <label>Parent:</label>
                 <Select
                 isLoading={!itemsList.length}
                 valueKey="id"
