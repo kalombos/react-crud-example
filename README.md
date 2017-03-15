@@ -1,7 +1,7 @@
 
 # React Redux CRUD App
 
-Here is the sample of CRUD app for tree structure using **Python3/Django** for 
+Here is the sample of CRUD app for tree structure. It uses **Python3/Django** for 
 backend and **React+Redux** for frontend
 
 # Local Installation and runnig
