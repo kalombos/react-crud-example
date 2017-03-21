@@ -2,7 +2,7 @@
 # React Redux CRUD App
 
 Here is the sample of CRUD app for tree structure. It uses **Python3/Django** for 
-backend and **React+Redux** for frontend. [Live Demo] (https://infinite-river-67461.herokuapp.com/)
+backend and **React+Redux** for frontend. [Live demo is here](https://infinite-river-67461.herokuapp.com/)
 
 
 # Local Installation and runnig for development
@@ -11,7 +11,6 @@ backend and **React+Redux** for frontend. [Live Demo] (https://infinite-river-67
 1. **pip install -r requirements.txt**
 2. **python manage.py migrate**
 3. **python manage.py runserver**
-4. Go to http://localhost:8000/docs/, here is a description for our rest api in swagger format 
 
 
 ## Setup frontend
