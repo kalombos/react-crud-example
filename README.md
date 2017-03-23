@@ -17,15 +17,12 @@ backend and **React+Redux** for frontend. [Live demo is here](https://infinite-r
 
 1. **cd frontend**
 2. **npm update**
-3. update **API** variable to **'http://localhost:8000/api'** in **frontned/src/config.js**
 3. **npm start**
 4. Go to localhost:3000
 
 
 # Run for production (Not a best solution for the moment)
 
-1. update **API** variable to **'/api'** in **frontned/src/config.js**
-2. **npm run build**
-3. fix static paths in backend/templates/index.html
-4. python manage.py collectstatic
-5. push to heroku
+1. **npm run build**
+2. fix static paths in backend/templates/index.html
+3. push to heroku

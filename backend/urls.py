@@ -27,5 +27,5 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'api/', include('api.urls', namespace='api')),
     url(r'^docs/$', schema_view),
-    url(r'^$', TemplateView.as_view(template_name="index.html")),
+    url(r'^(?:.*)/?$', TemplateView.as_view(template_name="index.html")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
