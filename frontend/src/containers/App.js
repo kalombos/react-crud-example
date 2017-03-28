@@ -9,7 +9,7 @@ class App extends Component {
     return (
         <div>
             <div className="page-header">
-                <h1>React CRUD for tree structure. <a href="/docs">Swagger API</a></h1>
+                <h1>React CRUD for tree structure. <a href="/docs/">Swagger API</a></h1>
 
             </div>
             <LoadingBar />
